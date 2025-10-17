@@ -36,20 +36,20 @@
   </style>
   <title>《鏈鋸人》特典回報</title>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-[#f5f9f3] text-[#2d4a24]">
 
   <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-xl">
     <!-- 標題與圖片區塊 -->
-    <div class="bg-white rounded-2xl shadow-lg mb-4">
+    <div class="bg-[#fcfdf8] rounded-2xl shadow-lg mb-4">
       <div class="p-4 sm:p-6">
-        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">《鏈鋸人》特典回報</h1>
-        <hr class="my-4 border-gray-200">
+        <h1 class="text-2xl sm:text-3xl font-bold text-[#585048]">《鏈鋸人》特典回報</h1>
+        <hr class="my-4 border-[#d4e7cc]">
         <div class="flex flex-col sm:flex-row gap-3 my-4">
           <a href="https://forms.fillout.com/t/opAtRkfE2tus" target="_blank" rel="noopener noreferrer" class="flex-1 p-2 bg-[#93B881] text-white text-center font-medium rounded-lg hover:bg-[#7da56d] transition-colors duration-200 shadow-sm">填寫特典回報</a>
-          <a href="https://www.threads.com/@pdatone" target="_blank" rel="noopener noreferrer" class="flex-1 p-2 bg-gray-100 text-gray-700 text-center font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200 shadow-sm">私訊作者</a>
+          <a href="https://www.threads.com/@pdatone" target="_blank" rel="noopener noreferrer" class="flex-1 p-2 bg-[#e8f2e3] text-[#446635] text-center font-medium rounded-lg hover:bg-[#d4e7cc] transition-colors duration-200 shadow-sm">私訊作者</a>
         </div>
-        <p class="text-base text-gray-600 mt-2 text-sm">本頁面使用 AI 製作，若有任何資訊需要更新，或是頁面出現錯誤，請私訊作者的 Threads，謝謝大家的協助！</p>
-        <p class="text-sm text-gray-500 mt-4">
+        <p class="text-base text-[#585048] mt-2 text-sm">本頁面使用 AI 製作，若有任何資訊需要更新，或是頁面出現錯誤，請私訊作者的 Threads，謝謝大家的協助！</p>
+        <p class="text-sm text-[#527a42] mt-4">
           <span>回報資料最後更新時間：</span><span id="last-update-time">讀取中……</span>
         </p>
         <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/564046682_1251432107030321_4419351019757513813_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=CFkjZXl5QBYQ7kNvwENKP6p&_nc_oc=AdltUWYgqwsS11Up-nispsAxTzhkSvqjvwP4Luq0nZ9rFXNaVPgMU6-m_LLCgOjQ4GA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=ccHtRWs6n6cWpddxsj0whQ&oh=00_Aff4rvx55-8A2fdvEHpr9pG4zvM7o_gw0gWoTEwpnmvn1w&oe=68F7C715" alt="特典活動圖片" class="block w-full mt-4 rounded-lg object-cover">
@@ -57,21 +57,21 @@
     </div>
 
     <!-- 控制區塊（吸頂效果） -->
-    <div id="controls-container" class="sticky p-4 sm:p-6 top-0 z-50 bg-white rounded-2xl shadow-lg mb-4">
-      <label for="week-selector" class="block text-base font-medium text-gray-700">請選擇您想查詢的特典週次。</label>
-      <div id="week-loading" class="mt-2 text-sm text-gray-500">正在載入週次選項……</div>
-      <select id="week-selector" class="hidden mt-1 block w-full pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-[#93B881] focus:border-[#93B881] sm:text-sm rounded-md shadow-sm">
+    <div id="controls-container" class="sticky p-4 sm:p-6 top-0 z-50 bg-[#fcfdf8] rounded-2xl shadow-lg mb-4">
+      <label for="week-selector" class="block text-base font-medium text-[#585048]">請選擇您想查詢的特典週次。</label>
+      <div id="week-loading" class="mt-2 text-sm text-[#527a42]">正在載入週次選項……</div>
+      <select id="week-selector" class="hidden mt-1 block w-full pl-3 pr-10 py-2 text-sm text-[#2d4a24] bg-[#fcfdf8] border-[#d4e7cc] focus:outline-none focus:ring-[#93B881] focus:border-[#93B881] sm:text-sm rounded-md shadow-sm">
         <option value="">— 請選擇 —</option>
       </select>
       <div id="region-anchor-nav" class="hidden mt-4 pb-0 sm:px-0 flex-wrap gap-2 justify-start flex"></div>
     </div>
 
     <!-- 結果顯示區域 -->
-    <div id="results-wrapper" class="hidden bg-white rounded-2xl shadow-lg">
+    <div id="results-wrapper" class="hidden bg-[#fcfdf8] rounded-2xl shadow-lg">
       <div id="results-container" class="p-4 sm:p-6">
         <div id="loading-spinner" class="hidden justify-center items-center py-10">
           <div class="spinner"></div>
-          <p class="ml-4 text-gray-600">正在載入資料……</p>
+          <p class="ml-4 text-[#527a42]">正在載入資料……</p>
         </div>
         <div id="error-message" class="hidden text-center text-red-600 bg-red-50 p-4 rounded-lg"></div>
         <div id="data-display-area"></div>
@@ -218,7 +218,7 @@
     }
     
     if (!allData || allData.length === 0) {
-      dataDisplayArea.innerHTML = `<div class="text-center text-gray-500 py-10"><p>此週次尚無任何回報資料。</p></div>`;
+      dataDisplayArea.innerHTML = `<div class="text-center text-[#527a42] py-10"><p>此週次尚無任何回報資料。</p></div>`;
       return;
     }
 
@@ -227,16 +227,16 @@
       const anchor = document.createElement('a');
       anchor.href = `#region-${regionData.region}`;
       anchor.textContent = regionData.region;
-      anchor.className = 'px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-xl hover:bg-[#E1EAD9] hover:text-[#4A6C3A] transition-colors duration-200';
+      anchor.className = 'px-3 py-1.5 text-xs font-medium text-[#446635] bg-[#e8f2e3] rounded-xl hover:bg-[#d4e7cc] hover:text-[#2d4a24] transition-colors duration-200';
       regionAnchorNav.appendChild(anchor);
 
-      finalHTML += `<div id="region-${regionData.region}" class="mt-6 sm:mt-8 first:mt-0 scroll-mt-40"><h2 class="text-lg sm:text-xl font-bold text-[#4A6C3A] bg-[#F0F5EE] px-3 py-2 sm:px-4 rounded-t-xl">${regionData.region}</h2><div class="overflow-x-auto border border-gray-200 rounded-b-xl"><table class="w-full table-fixed divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="w-2/3 px-3 sm:px-4 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">影城名稱</th><th scope="col" class="w-1/3 px-3 sm:px-4 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">特典狀態</th></tr></thead><tbody class="bg-white divide-y divide-gray-200">`;
+      finalHTML += `<div id="region-${regionData.region}" class="mt-6 sm:mt-8 first:mt-0 scroll-mt-48"><h2 class="text-lg sm:text-xl font-bold text-[#2d4a24] bg-[#e8f2e3] px-3 py-2 sm:px-4 rounded-t-xl">${regionData.region}</h2><div class="overflow-x-auto border border-[#d4e7cc] rounded-b-xl"><table class="w-full table-fixed divide-y divide-[#d4e7cc]"><thead class="bg-[#f5f9f3]"><tr><th scope="col" class="w-2/3 px-3 sm:px-4 py-1 text-left text-xs font-medium text-[#475447] uppercase tracking-wider">影城名稱</th><th scope="col" class="w-1/3 px-3 sm:px-4 py-1 text-left text-xs font-medium text-[#475447] uppercase tracking-wider">特典狀態</th></tr></thead><tbody class="bg-[#fcfdf8] divide-y divide-[#d4e7cc]">`;
       if (regionData.cinemas && regionData.cinemas.length > 0) {
         regionData.cinemas.forEach(item => {
-          finalHTML += `<tr class="hover:bg-gray-50 transition-colors duration-200"><td class="w-2/3 px-3 sm:px-4 py-2 text-sm font-medium text-gray-900 break-words">${item.theater}</td><td class="w-1/3 px-3 sm:px-4 py-2 whitespace-nowrap text-sm text-gray-700">${item.status}</td></tr>`;
+          finalHTML += `<tr class="hover:bg-[#f5f9f3] transition-colors duration-200"><td class="w-2/3 px-3 sm:px-4 py-2 text-sm font-medium text-[#585048] break-words">${item.theater}</td><td class="w-1/3 px-3 sm:px-4 py-2 whitespace-nowrap text-sm text-[#585048]">${item.status}</td></tr>`;
         });
       } else {
-        finalHTML += `<tr><td colspan="2" class="px-6 py-4 text-center text-sm text-gray-500">此地區尚無影城資料。</td></tr>`;
+        finalHTML += `<tr><td colspan="2" class="px-6 py-4 text-center text-sm text-[#585048]">此地區尚無影城資料。</td></tr>`;
       }
       finalHTML += `</tbody></table></div></div>`;
     });
