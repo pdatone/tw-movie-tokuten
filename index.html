@@ -50,7 +50,7 @@
         </div>
         <p class="text-base text-gray-600 mt-2 text-sm">本頁面使用 AI 製作，若有任何資訊需要更新，或是頁面出現錯誤，請私訊作者的 Threads，謝謝大家的協助！</p>
         <p class="text-sm text-gray-500 mt-4">
-          <span>回報資料最後更新時間：</span><span id="last-update-time"></span>
+          <span>回報資料最後更新時間：</span><span id="last-update-time">讀取中……</span>
         </p>
         <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/564046682_1251432107030321_4419351019757513813_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=CFkjZXl5QBYQ7kNvwENKP6p&_nc_oc=AdltUWYgqwsS11Up-nispsAxTzhkSvqjvwP4Luq0nZ9rFXNaVPgMU6-m_LLCgOjQ4GA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=ccHtRWs6n6cWpddxsj0whQ&oh=00_Aff4rvx55-8A2fdvEHpr9pG4zvM7o_gw0gWoTEwpnmvn1w&oe=68F7C715" alt="特典活動圖片" class="block w-full mt-4 rounded-lg object-cover">
       </div>
@@ -140,6 +140,7 @@
       displayLastUpdateTime(timeString);
     } catch (error) {
       console.error('取得更新時間失敗:', error);
+      displayLastUpdateTime(null); // 顯示錯誤訊息
     }
   });
 
@@ -149,8 +150,12 @@
    */
   function displayLastUpdateTime(timeString) {
     const el = document.getElementById('last-update-time');
-    if (el && timeString) {
-      el.textContent = timeString;
+    if (el) {
+      if (timeString) {
+        el.textContent = timeString;
+      } else {
+        el.textContent = '無法取得更新時間';
+      }
     }
   }
 
@@ -267,4 +272,3 @@
 
 </body>
 </html>
-
