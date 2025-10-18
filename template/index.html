@@ -38,7 +38,7 @@
 </head>
 <body class="bg-[#f5f9f3] text-[#2d4a24]">
 
-  <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-xl">
+  <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-2xl">
     <!-- 標題與圖片區塊 -->
     <div class="bg-[#fcfdf8] rounded-2xl shadow-lg mb-4">
       <div class="p-4 sm:p-6">
@@ -49,7 +49,7 @@
           <a href="https://www.threads.com/@pdatone" target="_blank" rel="noopener noreferrer" class="flex-1 p-2 bg-[#e8f2e3] text-[#446635] text-center font-medium rounded-lg hover:bg-[#d4e7cc] transition-colors duration-200 shadow-sm">私訊作者</a>
           <a href="https://pdatone.github.io/tw-movie-tokuten/" class="flex-1 p-2 bg-[#F4F7F3] text-[#527a42] text-center font-medium rounded-lg hover:bg-[#e8f2e3] transition-colors duration-200 shadow-sm">返回總覽</a>
         </div>
-        <p class="text-base text-[#585048] mt-2 text-sm">本頁面使用 AI 製作，若有任何資訊需要更新，或是頁面出現錯誤，請私訊作者的 Threads，謝謝大家的協助！</p>
+        <p class="text-base text-[#585048] mt-2 text-sm">本頁面使用 AI 製作，若有需要新增沒出現在列表上的電影，或是頁面錯誤等其他問題，請私訊我的 Threads。因為目前 Readme 還沒編輯完成，如果你也想要使用這個工具，歡迎私訊跟我聯繫，我會跟你說怎麼使用～</p>
         <p class="text-sm text-[#527a42] mt-4">
           <span>回報資料最後更新時間：</span><span id="last-update-time">讀取中……</span>
         </p>
@@ -155,7 +155,7 @@
       if (timeString) {
         el.textContent = timeString;
       } else {
-        el.textContent = '無法取得更新時間';
+        el.textContent = '尚未收到特典回報資料。';
       }
     }
   }
@@ -174,7 +174,7 @@
       });
       showElement('week-selector');
     } else {
-      weekLoadingMsg.textContent = '找不到任何特典週次的回報資料。';
+      weekLoadingMsg.textContent = '目前沒有收到任何特典週次的回報資料。';
       showElement('week-loading');
     }
   }
