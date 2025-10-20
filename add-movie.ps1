@@ -19,6 +19,8 @@ $movieNameEn = Read-Host "Movie name (English)"
 
 # Auto generate folder name - remove parentheses and replace spaces with single dash
 $movieFolder = $movieNameEn -replace '[()��\[\]]', '' -replace '\s+', '-' -replace '-+', '-' -replace '^-|-$', ''
+$releaseDate = Read-Host "Release date (上映日期)"
+$posterInfoUrl = Read-Host "Poster info URL (官方海報資訊連結)"
 $formUrl = Read-Host "Form URL"
 $posterUrl = Read-Host "Poster URL"
 $gasUrl = Read-Host "GAS URL (Google Apps Script Web App URL)"
@@ -29,6 +31,8 @@ Write-Host "Confirm information:" -ForegroundColor Cyan
 Write-Host "Chinese name: $movieNameZh" -ForegroundColor White
 Write-Host "English name: $movieNameEn" -ForegroundColor White
 Write-Host "Folder name: $movieFolder" -ForegroundColor White
+Write-Host "Release date: $releaseDate" -ForegroundColor White
+Write-Host "Poster info URL: $posterInfoUrl" -ForegroundColor White
 Write-Host "Form URL: $formUrl" -ForegroundColor White
 Write-Host "Poster URL: $posterUrl" -ForegroundColor White
 Write-Host "GAS URL: $gasUrl" -ForegroundColor White
@@ -121,6 +125,27 @@ if ($gasStart -ge 0) {
         $newGasUrl = "const GAS_URL = '" + $gasUrl + "';"
         $content = $content.Replace($oldGasUrl, $newGasUrl)
         Write-Host "   - Updated GAS URL" -ForegroundColor Cyan
+    }
+}
+
+# Replace release date
+$releaseDatePattern = '<p class="text-base text-[#585048] mt-2 text-sm">上映日期：</p>'
+if ($content.Contains($releaseDatePattern)) {
+    $newReleaseDate = '<p class="text-base text-[#585048] mt-2 text-sm">上映日期：' + $releaseDate + '</p>'
+    $content = $content.Replace($releaseDatePattern, $newReleaseDate)
+    Write-Host "   - Updated release date" -ForegroundColor Cyan
+}
+
+# Replace poster info URL
+$posterInfoPattern = '<p class="text-base text-[#585048] mt-2 text-sm"><a href="'
+$posterInfoStart = $content.IndexOf($posterInfoPattern)
+if ($posterInfoStart -ge 0) {
+    $posterInfoEnd = $content.IndexOf('" target="_blank" rel="noopener noreferrer" class="text-[#4A6C3A] font-medium hover:underline">官方海報資訊請點此處查看</a></p>', $posterInfoStart)
+    if ($posterInfoEnd -gt $posterInfoStart) {
+        $oldPosterInfoBlock = $content.Substring($posterInfoStart, $posterInfoEnd - $posterInfoStart) + '" target="_blank" rel="noopener noreferrer" class="text-[#4A6C3A] font-medium hover:underline">官方海報資訊請點此處查看</a></p>'
+        $newPosterInfoBlock = '<p class="text-base text-[#585048] mt-2 text-sm"><a href="' + $posterInfoUrl + '" target="_blank" rel="noopener noreferrer" class="text-[#4A6C3A] font-medium hover:underline">官方海報資訊請點此處查看</a></p>'
+        $content = $content.Replace($oldPosterInfoBlock, $newPosterInfoBlock)
+        Write-Host "   - Updated poster info URL" -ForegroundColor Cyan
     }
 }
 
