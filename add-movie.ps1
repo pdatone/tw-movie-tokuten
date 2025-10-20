@@ -163,11 +163,12 @@ if (Test-Path $homePath) {
     
     # Build new movie block using simple string concatenation
     $newMovieBlock = '<div class="block p-3 bg-[#F4F7F3] rounded-lg shadow-sm">' + "`r`n"
+    $newMovieBlock += '          <p class="text-xs text-gray-400 mb-1">' + $releaseDate + '</p>' + "`r`n"
     $newMovieBlock += '          <h3 class="font-semibold text-lg text-[#585048]">' + $movieNameZh + '</h3>' + "`r`n"
     $newMovieBlock += '          <p class="text-sm opacity-75 text-[#527a42]">' + $movieNameEn + '</p>' + "`r`n"
     $newMovieBlock += '          <div class="flex gap-3 mt-2">' + "`r`n"
-    $newMovieBlock += '            <a href="' + $formUrl + '" target="_blank" rel="noopener noreferrer" class="flex-1 text-center p1.5 bg-[#93B881] text-white text-sm font-medium rounded-lg hover:bg-[#7da56d] transition-colors duration-200">' + $fillText + '</a>' + "`r`n"
-    $newMovieBlock += '            <a href="./' + $movieFolder + '" class="flex-1 text-center p1.5 bg-[#527a42] text-white text-sm font-medium rounded-lg hover:bg-[#3F5C37] transition-colors duration-200">' + $viewText + '</a>' + "`r`n"
+    $newMovieBlock += '            <a href="' + $formUrl + '" target="_blank" rel="noopener noreferrer" class="flex-1 text-center p-1.5 bg-[#93B881] text-white text-sm font-medium rounded-lg hover:bg-[#7da56d] transition-colors duration-200">' + $fillText + '</a>' + "`r`n"
+    $newMovieBlock += '            <a href="./' + $movieFolder + '" class="flex-1 text-center p-1.5 bg-[#527a42] text-white text-sm font-medium rounded-lg hover:bg-[#3F5C37] transition-colors duration-200">' + $viewText + '</a>' + "`r`n"
     $newMovieBlock += '          </div>' + "`r`n"
     $newMovieBlock += '        </div>' + "`r`n"
     
