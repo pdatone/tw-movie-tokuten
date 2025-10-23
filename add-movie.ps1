@@ -1,4 +1,4 @@
-# Add Movie Script
+﻿# Add Movie Script
 # Usage: .\add-movie.ps1
 # Encoding: UTF-8 with BOM
 
@@ -18,7 +18,7 @@ $movieNameZh = Read-Host "Movie name (Chinese)"
 $movieNameEn = Read-Host "Movie name (English)"
 
 # Auto generate folder name - remove parentheses and replace spaces with single dash
-$movieFolder = $movieNameEn -replace '[()��\[\]]', '' -replace '\s+', '-' -replace '-+', '-' -replace '^-|-$', ''
+$movieFolder = $movieNameEn -replace '[()（）\[\]]', '' -replace '\s+', '-' -replace '-+', '-' -replace '^-|-$', ''
 $releaseDate = Read-Host "Release date (上映日期)"
 $posterInfoUrl = Read-Host "Poster info URL (官方海報資訊連結)"
 $formUrl = Read-Host "Form URL"
@@ -62,8 +62,8 @@ New-Item -Path $newFolderPath -ItemType Directory | Out-Null
 Copy-Item -Path $templateIndexPath -Destination "$newFolderPath\index.html"
 Write-Host "   Done: Folder created" -ForegroundColor Green
 
-# Step 2: Update index.html
-Write-Host "2. Updating index.html..." -ForegroundColor Yellow
+# Step 2: Update movie folder index.html
+Write-Host "2. Updating movie folder index.html..." -ForegroundColor Yellow
 $indexPath = "$newFolderPath\index.html"
 
 # Create replacement patterns using Unicode character codes to avoid encoding issues
@@ -153,9 +153,9 @@ if ($posterInfoStart -ge 0) {
 [System.IO.File]::WriteAllText($indexPath, $content, [System.Text.Encoding]::UTF8)
 Write-Host "   Done: index.html updated" -ForegroundColor Green
 
-# Step 3: Update home.html
-Write-Host "3. Updating home.html..." -ForegroundColor Yellow
-$homePath = ".\home.html"
+# Step 3: Update main index.html (homepage)
+Write-Host "3. Updating main index.html..." -ForegroundColor Yellow
+$homePath = ".\index.html"
 
 if (Test-Path $homePath) {
     # Read file
@@ -163,11 +163,12 @@ if (Test-Path $homePath) {
     
     # Build new movie block using simple string concatenation
     $newMovieBlock = '<div class="block p-3 bg-[#F4F7F3] rounded-lg shadow-sm">' + "`r`n"
+    $newMovieBlock += '          <p class="text-xs text-gray-400 mb-1">' + $releaseDate + '</p>' + "`r`n"
     $newMovieBlock += '          <h3 class="font-semibold text-lg text-[#585048]">' + $movieNameZh + '</h3>' + "`r`n"
     $newMovieBlock += '          <p class="text-sm opacity-75 text-[#527a42]">' + $movieNameEn + '</p>' + "`r`n"
     $newMovieBlock += '          <div class="flex gap-3 mt-2">' + "`r`n"
-    $newMovieBlock += '            <a href="' + $formUrl + '" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2 px-3 bg-[#93B881] text-white text-sm font-medium rounded-lg hover:bg-[#7da56d] transition-colors duration-200">' + $fillText + '</a>' + "`r`n"
-    $newMovieBlock += '            <a href="./' + $movieFolder + '" class="flex-1 text-center py-2 px-3 bg-[#527a42] text-white text-sm font-medium rounded-lg hover:bg-[#3F5C37] transition-colors duration-200">' + $viewText + '</a>' + "`r`n"
+    $newMovieBlock += '            <a href="' + $formUrl + '" target="_blank" rel="noopener noreferrer" class="flex-1 text-center p-1.5 bg-[#93B881] text-white text-sm font-medium rounded-lg hover:bg-[#7da56d] transition-colors duration-200">' + $fillText + '</a>' + "`r`n"
+    $newMovieBlock += '            <a href="./' + $movieFolder + '" class="flex-1 text-center p-1.5 bg-[#527a42] text-white text-sm font-medium rounded-lg hover:bg-[#3F5C37] transition-colors duration-200">' + $viewText + '</a>' + "`r`n"
     $newMovieBlock += '          </div>' + "`r`n"
     $newMovieBlock += '        </div>' + "`r`n"
     
@@ -180,7 +181,7 @@ if (Test-Path $homePath) {
         # Insert before the closing comment
         $homeContent = $homeContent.Replace($closingComment, $newMovieBlock + '        ' + $closingComment)
         [System.IO.File]::WriteAllText($homePath, $homeContent, [System.Text.Encoding]::UTF8)
-        Write-Host "   Done: home.html updated successfully!" -ForegroundColor Green
+        Write-Host "   Done: index.html updated successfully!" -ForegroundColor Green
     } else {
         Write-Host "   Warning: Could not find insertion marker" -ForegroundColor Yellow
         Write-Host "   Trying alternative method..." -ForegroundColor Yellow
@@ -202,9 +203,9 @@ if (Test-Path $homePath) {
             $newLines += $lines[$insertIdx..($lines.Count-1)]
             $homeContent = $newLines -join "`r`n"
             [System.IO.File]::WriteAllText($homePath, $homeContent, [System.Text.Encoding]::UTF8)
-            Write-Host "   Done: home.html updated with fallback method!" -ForegroundColor Green
+            Write-Host "   Done: index.html updated with fallback method!" -ForegroundColor Green
         } else {
-            Write-Host "   Error: Could not update home.html" -ForegroundColor Red
+            Write-Host "   Error: Could not update index.html" -ForegroundColor Red
         }
     }
 }
@@ -218,3 +219,4 @@ Write-Host "New folder: $newFolderPath" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Press any key to exit..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+
